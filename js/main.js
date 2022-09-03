@@ -47,7 +47,7 @@ const displayNews = async (id, cateName) => {
                                 </div>
                             </div>
                             <div class=""><i class="fa-solid fa-eye"></i> ${total_view ? total_view : 'Hide'} view</div>
-                            <button onclick="displayDetails('${_id}')" class="px-3 fw-bold pt-1 btn bg-info text-light rounded-2">See more <i class="fa-sharp fa-solid fa-arrow-right-long"></i></button>
+                            <button onclick="loadDetails('${_id}')" class="px-3 fw-bold pt-1 btn btn-light text-muted rounded-2">See more <i class="fa-sharp fa-solid fa-arrow-right-long"></i></button>
                         </div>
                     </div>
                 </div>
@@ -58,7 +58,9 @@ const displayNews = async (id, cateName) => {
     });
 };
 
-const displayDetails = async detailsId => {
-    const res = await fetch(``)
-    console.log(detailsId)
+const loadDetails = async newsId => {
+    const res = await fetch(` https://openapi.programming-hero.com/api/news/${newsId}`);
+    const data = await res.json();
+    const newsDetails = data.data[0];
+    console.log(data)
 }
