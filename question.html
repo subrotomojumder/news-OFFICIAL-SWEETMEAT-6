@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <title>Question</title>
+</head>
+<body>
+    <main class=" container bg-info rounded-4 p-3 mt-3">
+        <a class="btn btn-light ms-5"  href="index.html" >Back</a>
+        <h3 class="text-center">Question and ans</h3>
+        <div>
+            <h6>Q.1. Var, Let, and Const What's the Difference?</h6>
+            <u>Ans:</u>
+            <p class="ms-3"><span class="fw-bold">Var:</span> যখন var ব্যবহার করে একটি ভ্যারিয়েবলকে কোন ফাংশনের বাহিরে ডিক্লেয়ার করা হয়, তখন ভ্যারিয়েবলটি global scope-এ থাকে। অর্থাৎ, ফাংশন ব্লকের বাহিরে var কীওয়ার্ড ব্যবহার করে ডিক্লেয়ার করা যে কোন ভ্যারিয়েবল, সম্পূর্ণ উইন্ডোতে ব্যবহার করা যায়। var declare করে রিএসাইন করা যায়। এখন আম দিয়ে একাধিকবার ডিক্লেয়ার করা যায়।</p>
+            <p class="ms-3"><span class="fw-bold">Let:</span> কোন ব্লকের ভেতরে let ব্যবহার করে ডিক্লেয়ার করা ভ্যারিয়েবল শুধুমাত্র ঐ ব্লকের মধ্যেই ব্যবহার করা যাবে । let আপডেট করা যায় তবে রিডিক্লেয়ার করা যায় না ।</p>
+            <p class="ms-3"><span class="fw-bold">Const:</span> const দিয়ে ডিক্লেয়ার করা ভ্যারিয়েবল তার scope-এর মধ্যে অপরিবর্তিত থাকবে। এটা আপডেট অথবা রিডিক্লেয়ার করা যাবে না। const অবজেক্টকে আপডেট করা যায় না, তবে তার ভেতরের প্রোপার্টিগুলোকে আপডেট করা যায়।</p>
+        </div>
+        <div>
+            <h6>Q.2. what is template string?</h6>
+            <u>Ans:</u>
+            <p class="ms-3">Template string (``) সাধারণত dynamic করার জন্য ব্যবহার করা হয় । যেগুলি ডলার চিহ্ন এবং কোঁকড়া ধনুর্বন্ধনী দ্বারা সীমাবদ্ধ এমবেডেড এক্সপ্রেশন: ${expression} । স্ট্রিং এবং স্থানধারক একটি ফাংশনে পাস হয় হয় একটি ডিফল্ট ফাংশন, অথবা একটি ফাংশন যা আপনি সরবরাহ করেন। ডিফল্ট ফাংশন (যখন আপনি নিজের সরবরাহ করেন না) শুধুমাত্র স্থানধারকগুলির প্রতিস্থাপন করতে স্ট্রিং ইন্টারপোলেশন সঞ্চালন করে এবং তারপরে অংশগুলিকে একটি একক স্ট্রিংয়ে সংযুক্ত করে। </p>
+        </div>
+        <div>
+            <h6>Q.3. Difference Between Regular Functions and Arrow Functions?</h6>
+            <u>Ans:</u>
+            <p class="ms-3"><span class="fw-bold">1.This value:</span> Regular function  ডিস ইউজ করলে ওই ফাংশন কে নির্দেশ করে। Arrow function use করলে this value window  হয়ে যায়</p>
+            <p class="ms-3"><span class="fw-bold">2.Parameter:</span>Regular function একই নামের Parameter একাধিকবার দেওয়া যায় । তবে arrow function একই নামের parameter একাধিকবার দেওয়া যায় না</p>
+            <p class="ms-3"><span class="fw-bold">3.Bracket:</span>Regular function একটি প্যারামিটার হলে ও return করতে curly bracket ইউজ করা লাগে। তবে arrow function একটি প্যারামিটার হলে ও return করতে curly bracket ইউজ করা লাগে না</p>
+            <p class="ms-3"><span class="fw-bold">4.with new:</span> arrow function new কীওয়ার্ড দ্বারা call করা যাবে না । কারণ এটির কোনও prototype নেই এবং this নেই । Regular function এর সময় this, new use করা যায় ।</p>
+        </div>
+    </main>
+</body>
+</html>
