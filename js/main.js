@@ -52,7 +52,7 @@ const displayNews = async (id, cateName) => {
                                     Published: ${author.published_date ? author.published_date : 'unknown'}
                                 </div>
                             </div>
-                            <div class=""><i class="fa-solid fa-eye"></i> ${total_view ? total_view : 'Hide'}M</div>
+                            <div class=""><i class="fa-solid fa-eye"></i> ${total_view ? total_view +'M' : 'Hide'}</div>
                             <button onclick="loadDetails('${_id}')" data-bs-toggle="modal" data-bs-target="#newsDetailModal" class="px-3 fw-bold pt-1 btn btn-light text-muted rounded-2">See more <i class="fa-sharp fa-solid fa-arrow-right-long"></i></button>
                         </div>
                     </div>
