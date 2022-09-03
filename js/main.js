@@ -4,7 +4,7 @@ const loadCategory = async () => {
         const data = await res.json();
         return data.data.news_category;
     } catch (error) {
-        console.log(error)
+       alert('please check your internet connection !');
     }
 }
 
@@ -13,28 +13,27 @@ const showCategory = async () => {
     const categoryList = document.getElementById('category-list');
     menu.forEach( category => {
         const div = document.createElement('div');
-        div.innerHTML = `<div onclick="displayNews('${category.category_id}','${category.category_name}')" class="category fw-semibold btn">${category.category_name}</div>`;
+        div.innerHTML = `<div onclick="loadNews('${category.category_id}')" class="category fw-semibold btn">${category.category_name}</div>`;
         categoryList.appendChild(div);
     });
 }
 showCategory();
 
-
-const displayNews = async (id, cateName) => {
+const loadNews = function(id) {
+    loaderSpinner(true);
+    fetch(`https://openapi.programming-hero.com/api/news/category/${id}`)
+    .then(res => res.json())
+    .then(data => displayNews(data.data))
+    .catch(error => document.getElementById('errorNotic').classList.remove('d-done'))
+}
+const displayNews = (newsBlogs) => {
     const newsContainer = document.getElementById('news-container');
     newsContainer.innerHTML = '';
-    loaderSpinner(true);
-    
-    // all category news load and display
-    const res = await fetch(`https://openapi.programming-hero.com/api/news/category/${id}`);
-    const data = await res.json();
-    const newsBlogs = data.data;
-
     // array object short by total_view
     newsBlogs.sort((a, b) => b.total_view > a.total_view ? 1 : b.total_view < a.total_view ? -1 : 0);
     // count news items and show display
     const countNews = document.getElementById('count-news');
-    countNews.innerHTML = `Event: <span class="text-warning">${newsBlogs.length === 0? 'No found ' : newsBlogs.length}</span> items in <span class="text-primary">${cateName}</span> category`;
+    countNews.innerHTML = `Event: <span class="text-warning">${newsBlogs.length === 0? 'No found ' : newsBlogs.length}</span> items in category Entertainment`;
     
     newsBlogs.forEach( blog => {
         const {author, details, thumbnail_url, total_view, title, others_info,_id} = blog;
@@ -70,6 +69,7 @@ const displayNews = async (id, cateName) => {
     });
     loaderSpinner(false);
 };
+
 // load news detail 
 const loadDetails = async newsId => {
     const modalContainer = document.getElementById('modal-container');
