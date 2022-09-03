@@ -48,8 +48,8 @@ const displayNews = async (id, cateName) => {
                             <div class="d-flex align-items-center">
                                 <img class="rounded-circle" src="${author ? author.img : 'unknown'}" style="width: 60px" alt="">
                                 <div>
-                                    <p class ="fw-bold mb-0">${author?author.name : 'unknown'}</p>
-                                    Published: ${author?author.published_date : 'unknown'}
+                                    <p class ="fw-bold mb-0">${author.name ? author.name : 'unknown'}</p>
+                                    Published: ${author.published_date ? author.published_date : 'unknown'}
                                 </div>
                             </div>
                             <div class=""><i class="fa-solid fa-eye"></i> ${total_view ? total_view : 'Hide'}M</div>
@@ -81,8 +81,8 @@ const loadDetails = async newsId => {
         </div>
         <div class="modal-body">
             <img class="rounded-2" src="${author ? author.img : 'unknown'}" style="width: 60px" alt="">
-            <p class ="fw-bold mb-0">${author?author.name : 'unknown'}</p>
-            <p class ="mb-0">Published: ${author?author.published_date : 'unknown'}</p>
+            <p class ="fw-bold mb-0">${author.name ? author.name : 'unknown'}</p>
+            <p class ="mb-0">Published: ${author.published_date ? author.published_date : 'unknown'}</p>
             <p class="border-bottom mx-5">Rating: <span class="ms-4">${rating? rating.badge : 'Nice'}</span> <span class="ms-5"> <i class="fa-solid fa-star"></i> <i class="fa-regular fa-star-half-stroke"></i> <i class="fa-regular fa-star"></i> <i class="fa-regular fa-star"></i></span></p>
             
             <p>${details}</p>
