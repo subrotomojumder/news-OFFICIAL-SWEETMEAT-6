@@ -1,7 +1,11 @@
 const loadCategory = async () => {
-    const res = await fetch(' https://openapi.programming-hero.com/api/news/categories');
-    const data = await res.json();
-    return data.data.news_category;
+    try {
+        const res = await fetch(' https://openapi.programming-hero.com/api/news/categories');
+        const data = await res.json();
+        return data.data.news_category;
+    } catch (error) {
+        console.log(error)
+    }
 }
 
 const showCategory = async () => {
@@ -24,11 +28,12 @@ const displayNews = async (id, cateName) => {
     const res = await fetch(`https://openapi.programming-hero.com/api/news/category/${id}`);
     const data = await res.json();
     const newsBlogs = data.data;
+
     // array object short by total_view
     newsBlogs.sort((a, b) => b.total_view > a.total_view ? 1 : b.total_view < a.total_view ? -1 : 0);
     // count news items and show display
     const countNews = document.getElementById('count-news');
-    countNews.innerHTML = `Event: Found <span class="text-warning">${newsBlogs.length}</span> items in <span class="text-primary">${cateName}</span> category`;
+    countNews.innerHTML = `Event: <span class="text-warning">${newsBlogs.length === 0? 'No found ' : newsBlogs.length}</span> items in <span class="text-primary">${cateName}</span> category`;
     
     newsBlogs.forEach( blog => {
         const {author, details, thumbnail_url, total_view, title, others_info,_id} = blog;
@@ -42,7 +47,7 @@ const displayNews = async (id, cateName) => {
                 <div class="col-12 col-sm-9 my-auto">
                     <div class="card-body">
                         <h4 class="card-title fw-bold text-primary my-2">${title}</h4>
-                        <p class="card-text"><small class="text-muted">${others_info.is_trending ? 'Published there <span class ="text-danger fw-bold">3 days ago</span> !' : 'Published there 5 days ago!'}</small></p>
+                        <p class="card-text"><small class="text-muted">${others_info.is_trending ? 'Trending there <span class ="text-danger fw-bold">3 days ago</span> !' : 'Trending there 7 days ago!'}</small></p>
                         <p class="card-text">${details.length > 500 ? details.slice(0, 500)+'....' : details}</p>
                         <div class="d-flex justify-content-between me-4">
                             <div class="d-flex align-items-center">
@@ -71,7 +76,7 @@ const loadDetails = async newsId => {
     const res = await fetch(` https://openapi.programming-hero.com/api/news/${newsId}`);
     const data = await res.json();
     const newsDetails = data.data[0];
-    console.log(newsDetails)
+    // console.log(newsDetails)
     const {author, details, image_url, title, rating} = newsDetails;
     modalContainer.innerHTML = `
     <div class="modal-content text-center">
