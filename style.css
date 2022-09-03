@@ -1,0 +1,19 @@
+body{
+    background-color: rgb(237, 231, 241);
+}
+.category{
+    display: flex;
+    background-color: rgb(250, 240, 240);
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    min-width: 110px;
+    padding: 5px;
+    margin: 2px;
+    font-weight: 900px;
+    border-radius: 10px;
+}
+.category:hover{
+    background-color: rgb(230, 219, 205);
+    border: 1px solid;
+}
