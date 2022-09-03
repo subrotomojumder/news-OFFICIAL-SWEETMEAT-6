@@ -3,7 +3,7 @@ body{
 }
 .category{
     display: flex;
-    background-color: rgb(250, 240, 240);
+    background-color: rgb(245, 214, 214);
     height: 50px;
     align-items: center;
     justify-content: center;
@@ -12,8 +12,4 @@ body{
     margin: 2px;
     font-weight: 900px;
     border-radius: 10px;
-}
-.category:hover{
-    background-color: rgb(230, 212, 189);
-    border: 1px solid;
 }

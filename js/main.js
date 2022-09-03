@@ -1,15 +1,15 @@
-const displayCategory = async () => {
+const loadCategory = async () => {
     const res = await fetch(' https://openapi.programming-hero.com/api/news/categories');
     const data = await res.json();
     return data.data.news_category;
 }
 
 const showCategory = async () => {
-    const menu = await displayCategory();
+    const menu = await loadCategory();
     const categoryList = document.getElementById('category-list');
     menu.forEach( category => {
         const div = document.createElement('div');
-        div.innerHTML = `<div onclick="displayNews('${category.category_id}','${category.category_name}')" class="category fw-semibold">${category.category_name}</div>`;
+        div.innerHTML = `<div onclick="displayNews('${category.category_id}','${category.category_name}')" class="category fw-semibold btn">${category.category_name}</div>`;
         categoryList.appendChild(div);
     });
 }
@@ -47,7 +47,7 @@ const displayNews = async (id, cateName) => {
                                 </div>
                             </div>
                             <div class=""><i class="fa-solid fa-eye"></i> ${total_view ? total_view : 'Hide'} view</div>
-                            <button onclick="loadDetails('${_id}')" class="px-3 fw-bold pt-1 btn btn-light text-muted rounded-2">See more <i class="fa-sharp fa-solid fa-arrow-right-long"></i></button>
+                            <button onclick="loadDetails('${_id}')" data-bs-toggle="modal" data-bs-target="#exampleModal" class="px-3 fw-bold pt-1 btn btn-light text-muted rounded-2">See more <i class="fa-sharp fa-solid fa-arrow-right-long"></i></button>
                         </div>
                     </div>
                 </div>
@@ -62,5 +62,6 @@ const loadDetails = async newsId => {
     const res = await fetch(` https://openapi.programming-hero.com/api/news/${newsId}`);
     const data = await res.json();
     const newsDetails = data.data[0];
-    console.log(data)
+    // console.log(newsDetails)
+    return newsDetails;
 }
